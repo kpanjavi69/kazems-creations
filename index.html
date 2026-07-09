@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kazem's Creations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-dark: #111d28;
+    --navy-light: #1c3144;
+    --gold: #b38f4f;
+    --gold-light: #d4b26a;
+    --body-bg: #f7f7f5;
+    --panel-bg: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-muted: #5a6570;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-dark);
+    line-height: 1.65;
+  }
+
+  h1, h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Sticky nav */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(17, 29, 40, 0.96);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(179, 143, 79, 0.35);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .nav-logo {
+    color: #fff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-logo span {
+    color: var(--gold-light);
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #d7dee5;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+
+  .nav-links a:hover {
+    color: #ffffff;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Header / Hero */
+  header {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(179, 143, 79, 0.16), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(179, 143, 79, 0.12), transparent 45%),
+      linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 110px 20px 90px;
+    position: relative;
+    border-bottom: 4px solid var(--gold);
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    padding: 8px 18px;
+    border: 1px solid rgba(212, 178, 106, 0.5);
+    border-radius: 999px;
+  }
+
+  header h1 {
+    font-size: 3.6rem;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  header .subtitle {
+    margin-top: 16px;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  header .subtitle a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 3px;
+  }
+
+  header .subtitle a:hover {
+    color: var(--gold-light);
+  }
+
+  .credential-strip {
+    max-width: 780px;
+    margin: 36px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .credential-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: #e9edf1;
+    font-weight: 500;
+  }
+
+  .credential-pill .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Section wrapper */
+  .product-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .product-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .product-section:nth-of-type(even) {
+    background-color: var(--panel-bg);
+  }
+
+  .product-section.reverse .image-block {
+    order: 2;
+  }
+
+  .product-section.reverse .text-block {
+    order: 1;
+  }
+
+  /* Image placeholder block */
+  .image-block {
+    position: relative;
+  }
+
+  .image-block::before {
+    content: "";
+    position: absolute;
+    inset: 14px -14px -14px 14px;
+    border: 2px solid rgba(179, 143, 79, 0.4);
+    border-radius: 10px;
+    z-index: 0;
+  }
+
+  .image-block img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(17, 29, 40, 0.22);
+    border: 2px solid var(--gold);
+    display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .image-block:hover img {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(17, 29, 40, 0.3);
+  }
+
+  /* App icon presentation (square logo, e.g. KAZAPP home-screen icon) */
+  .image-block.icon-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 380px;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    border-radius: 24px;
+  }
+
+  .image-block.icon-block::before {
+    inset: 14px -14px -14px 14px;
+    border-radius: 24px;
+  }
+
+  .image-block.icon-block img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 44px;
+    box-shadow: 0 18px 40px rgba(17, 29, 40, 0.35);
+  }
+
+  /* Text block */
+  .text-block .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .text-block .section-label .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .text-block h2 {
+    font-size: 2.1rem;
+    color: var(--navy-dark);
+    margin-bottom: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .text-block ul {
+    list-style: none;
+    margin-bottom: 26px;
+  }
+
+  .text-block ul li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 16px;
+    color: var(--text-muted);
+    font-size: 1.02rem;
+  }
+
+  .text-block ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--gold);
+    border-radius: 50%;
+  }
+
+  .text-block ul li strong {
+    color: var(--text-dark);
+  }
+
+  .link-row {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--navy-dark);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    border: 2px solid var(--gold);
+  }
+
+  .btn:hover {
+    background-color: var(--gold);
+    color: var(--navy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(179, 143, 79, 0.35);
+  }
+
+  .btn .arrow {
+    transition: transform 0.25s ease;
+  }
+
+  .btn:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--navy-dark);
+    border: 2px solid rgba(17, 29, 40, 0.25);
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--navy-dark);
+    color: #fff;
+    border-color: var(--navy-dark);
+    box-shadow: 0 10px 22px rgba(17, 29, 40, 0.25);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(9, 15, 21, 0.72);
+    padding: 30px 20px;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.is-open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--panel-bg);
+    border-radius: 14px;
+    max-width: 680px;
+    width: 100%;
+    margin: 40px auto;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+    border-top: 5px solid var(--gold);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    color: #fff;
+    padding: 30px 36px;
+    position: relative;
+  }
+
+  .modal-header .eyebrow {
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .modal-header h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .modal-close:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy-dark);
+  }
+
+  .modal-body {
+    padding: 32px 36px 36px;
+    color: var(--text-muted);
+  }
+
+  .modal-body p {
+    margin-bottom: 18px;
+    font-size: 1rem;
+  }
+
+  .modal-body strong {
+    color: var(--text-dark);
+  }
+
+  .modal-body h4 {
+    color: var(--navy-dark);
+    font-size: 1.05rem;
+    margin: 26px 0 14px;
+  }
+
+  .modal-body ul {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+
+  .modal-body ul li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+  }
+
+  .modal-body ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    background-color: var(--gold);
+    border-radius: 50%;
+  }
+
+  .modal-checklist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .modal-checklist span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(179, 143, 79, 0.1);
+    color: var(--navy-dark);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* Mini gallery (used on main page and inside modal) */
+  .mini-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .mini-gallery figure {
+    margin: 0;
+  }
+
+  .mini-gallery img,
+  .mini-gallery video {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--gold);
+    display: block;
+    box-shadow: 0 8px 20px rgba(17, 29, 40, 0.18);
+  }
+
+  .mini-gallery figcaption {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* Light legend */
+  .light-legend {
+    list-style: none;
+    margin: 16px 0 22px;
+  }
+
+  .light-legend li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.98rem;
+  }
+
+  .light-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .try-steps {
+    margin: 0 0 20px 20px;
+    color: var(--text-muted);
+  }
+
+  .try-steps li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
+
+  .try-steps li::marker {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .modal-tagline {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .modal-tagline span {
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 480px) {
+    .mini-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Divider */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* Footer */
+  footer {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(179, 143, 79, 0.12), transparent 55%),
+      linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px 40px;
+    margin-top: 20px;
+    border-top: 4px solid var(--gold);
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #ffffff;
+  }
+
+  footer p {
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    color: #d7dee5;
+  }
+
+  footer a {
+    color: var(--gold-light);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  footer .back-to-top {
+    display: inline-block;
+    margin-top: 26px;
+    color: #9aa7b1;
+    font-size: 0.8rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 18px;
+  }
+
+  footer .back-to-top:hover {
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 800px) {
+    .nav-links {
+      gap: 16px;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+    }
+
+    .product-section {
+      grid-template-columns: 1fr;
+      padding: 60px 24px;
+      gap: 36px;
+    }
+
+    .product-section.reverse .image-block,
+    .product-section.reverse .text-block {
+      order: initial;
+    }
+
+    header {
+      padding: 90px 20px 70px;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+    }
+
+    .image-block::before {
+      inset: 10px -10px -10px 10px;
+    }
+
+    .image-block img {
+      height: 260px;
+    }
+
+    .image-block.icon-block {
+      height: 260px;
+    }
+
+    .image-block.icon-block img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .nav-inner {
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px 20px;
+    }
+
+    .nav-links {
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">Kazem&rsquo;s <span>Creations</span></a>
+    <ul class="nav-links">
+      <li><a href="#book-1">Books</a></li>
+      <li><a href="#kazapp">KAZAPP</a></li>
+      <li><a href="#kaz-path">Kaz Path</a></li>
+      <li><a href="#scoreboard">Scoreboard</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <span class="hero-eyebrow">Olympian &middot; Elite Coach &middot; Author</span>
+  <h1>Kazem&rsquo;s Creations</h1>
+  <p class="subtitle">The Elite Weightlifting Ecosystem by <a href="https://ealingweightlifting.uk/about-us/about-kazem/" target="_blank" rel="noopener noreferrer">Kazem Panjavi</a></p>
+  <div class="credential-strip">
+    <span class="credential-pill"><span class="dot"></span>Barcelona &lsquo;92 Olympian</span>
+    <span class="credential-pill"><span class="dot"></span>7&times; Gold Medalist</span>
+    <span class="credential-pill"><span class="dot"></span>National Record Holder</span>
+    <span class="credential-pill"><span class="dot"></span>GB National Team Coach</span>
+  </div>
+</header>
+
+<!-- 1. Six Attempts: Six White Lights -->
+<section class="product-section" id="book-1">
+  <div class="image-block">
+    <img src="six-attempts-six-white-lights-cover.jpg" alt="Six Attempts: Six White Lights book cover">
+  </div>
+  <div class="text-block">
+    <span class="section-label"><span class="num">01</span>Book</span>
+    <h2>Six Attempts: Six White Lights</h2>
+    <ul>
+      <li><strong>Target Focus:</strong> Technical standards, platform mastery, and physical peaking protocols for competitive Olympic lifters.</li>
+      <li><strong>The Value:</strong> Eliminates platform nerves and tactical errors by mapping out exact warm-up room strategies and attempt selections.</li>
+      <li><strong>Coaching Voice:</strong> Built directly on decades of international competition expertise and elite technical officiating standards.</li>
+    </ul>
+    <div class="link-row">
+      <a class="btn" href="https://amzn.eu/d/01Q4eV3X" target="_blank" rel="noopener noreferrer">Get it on Amazon <span class="arrow">&rarr;</span></a>
+      <span class="note">Scan the QR at checkout for instant access</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 2. Female Olympic Weightlifters -->
+<section class="product-section reverse" id="book-2">
+  <div class="image-block">
+    <img src="female-olympic-weightlifters-cover.png" alt="Female Olympic Weightlifters book cover">
+  </div>
+  <div class="text-block">
+    <span class="section-label"><span class="num">02</span>Book</span>
+    <h2>Female Olympic Weightlifters</h2>
+    <ul>
+      <li><strong>100-Athlete Study:</strong> Built entirely on a real-world multi-year experiment tracking 100 female lifters across all performance levels.</li>
+      <li><strong>Hormonal Syncing:</strong> Teaches coaches and athletes how to read female hormones and sync training blocks to avoid injury.</li>
+      <li><strong>Advanced Recovery:</strong> Includes comprehensive breakdowns of safe elite supplementation, hydration, medicine use, and joint protection.</li>
+    </ul>
+    <div class="link-row">
+      <a class="btn" href="https://amzn.eu/d/0fFC8TGf" target="_blank" rel="noopener noreferrer">Get it on Amazon <span class="arrow">&rarr;</span></a>
+      <span class="note">Scan the QR at checkout for instant access</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 3. How to Win Olympic Weightlifting Competitions -->
+<section class="product-section" id="book-3">
+  <div class="image-block">
+    <img src="how to win book.jpg" alt="How to Win Olympic Weightlifting Competitions book cover">
+  </div>
+  <div class="text-block">
+    <span class="section-label"><span class="num">03</span>Book</span>
+    <h2>How to Win Olympic Weightlifting Competitions</h2>
+    <ul>
+      <li><strong>Competition Strategy:</strong> A practical guide to attempt selection, pacing, and reading the competition as it unfolds.</li>
+      <li><strong>Technical Preparation:</strong> Sharpens the specific skills and habits that hold up under real platform pressure, not just in training.</li>
+      <li><strong>Mental Readiness:</strong> Prepares lifters for the realities of performing on the platform, from nerves to the unexpected.</li>
+    </ul>
+    <div class="link-row">
+      <a class="btn" href="https://www.amazon.co.uk/dp/B089M2J3KQ" target="_blank" rel="noopener noreferrer">Get it on Amazon <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 4. KAZAPP Mobile Application -->
+<section class="product-section reverse" id="kazapp">
+  <div class="image-block icon-block">
+    <img src="kazapp-icon.png.jpeg" alt="KAZAPP home screen app icon">
+  </div>
+  <div class="text-block">
+    <span class="section-label"><span class="num">04</span>Mobile App</span>
+    <h2>KAZAPP Mobile Application</h2>
+    <ul>
+      <li><strong>The Core Choice:</strong> Replaces rigid spreadsheet programs. Encourages lifters to make a choice to listen to their body when they train to avoid injury.</li>
+      <li><strong>Female Auto-Regulation:</strong> Synchronizes training logs automatically with changing hormonal levels and cycle phases.</li>
+      <li><strong>Male Auto-Regulation:</strong> Dynamically adapts daily weight percentages using mood, energy, sleep, and recovery metrics.</li>
+      <li><strong>10 Built-In Programs:</strong> Steps systematically from complete beginner to international level and full competition plans.</li>
+    </ul>
+    <div class="link-row">
+      <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Watch on YouTube <span class="arrow">&rarr;</span></a>
+      <span class="note">Link coming soon</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 5. The Kaz Path & Shrug System -->
+<section class="product-section" id="kaz-path">
+  <div class="image-block">
+    <img src="kaz barpath shrug all in one.jpeg" alt="The Kaz Path and Shrug System hardware device">
+  </div>
+  <div class="text-block">
+    <span class="section-label"><span class="num">05</span>Hardware Device</span>
+    <h2>The Kaz Path &amp; Shrug System</h2>
+    <ul>
+      <li><strong>Instant Feedback:</strong> Provides a sharp visual laser cue tracking the bar path during the critical overhead drive from the jerk boxes.</li>
+      <li><strong>Technical Shrug Timing:</strong> Delivers instant visual cues right on the platform to master the vertical trajectory, explosive extension, and upper-body finish.</li>
+      <li><strong>Uninterrupted Momentum:</strong> Allows athletes to continue training autonomously at high intensity without wasting time stopping to check video delays on a phone.</li>
+    </ul>
+    <div class="mini-gallery">
+      <figure>
+        <img src="Kaz path poster.jpeg" alt="Kaz Path System information banner explaining the light system">
+        <figcaption>The Lights System</figcaption>
+      </figure>
+      <figure>
+        <video src="kaz-path-video-storyboard.mp4" controls muted playsinline preload="metadata"></video>
+        <figcaption>Watch It In Motion</figcaption>
+      </figure>
+    </div>
+    <div class="link-row">
+      <a class="btn" href="https://youtube.com/shorts/JjfhT1GtumU" target="_blank" rel="noopener noreferrer">Watch on YouTube <span class="arrow">&rarr;</span></a>
+      <button type="button" class="btn btn-ghost" data-modal-open="kaz-path-modal">More Information</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 6. Olympic Weightlifting Scoreboard Software -->
+<section class="product-section reverse" id="scoreboard">
+  <div class="image-block">
+    <img src="Competition scoreboard software.png" alt="Olympic Weightlifting Scoreboard Software interface">
+  </div>
+  <div class="text-block">
+    <span class="section-label"><span class="num">06</span>Software</span>
+    <h2>Olympic Weightlifting Scoreboard Software</h2>
+    <ul>
+      <li><strong>Virtual Competition Simulator:</strong> A powerful tool designed to help coaches and athletes simulate and practice real match scenarios right in their home club.</li>
+      <li><strong>Real-Time Tracking:</strong> Manages countdown clocks, lifting orders, and referee light displays exactly like an official international tournament.</li>
+      <li><strong>Sharper Coaching Decisions:</strong> Lets coaches rehearse attempt calls, warm-up timing, and weight selection under realistic pressure, so those calls become practiced skill instead of costly guesswork on competition day.</li>
+      <li><strong>Stress Management:</strong> Prepares lifters mentally for the pressure, clock constraints, and chaotic environment of a real weightlifting stage.</li>
+    </ul>
+    <div class="link-row">
+      <a class="btn" href="https://youtu.be/rkEMLdvHsEo?si=vAiAJcdiLOLR7aTa" target="_blank" rel="noopener noreferrer">Watch on YouTube <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="kaz-path-modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="kaz-path-modal-title">
+    <div class="modal-header">
+      <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
+      <span class="eyebrow">The Kaz Path System</span>
+      <h3 id="kaz-path-modal-title">Real-Time Precision, Where It Matters Most</h3>
+    </div>
+    <div class="modal-body">
+      <p><strong>Weightlifting technique is precise. Your feedback should be too.</strong></p>
+      <p>Olympic weightlifting (Snatch, Clean, and Jerk) is a highly technical sport where small visual errors can lead to missed lifts and inconsistent development. Coaches rely heavily on visual judgment, and athletes often struggle to understand their movement errors until after the lift, via delayed video analysis &mdash; a gap that slows down the learning curve.</p>
+
+      <h4>Introducing the Kaz Path System</h4>
+      <p>Developed by Kazem Panjavi, an Olympian and experienced weightlifting coach with over 35 years of experience training 1,300+ athletes, this system provides simple, instant, real-time feedback inside the training environment, during the movement.</p>
+
+      <h4>How It Works</h4>
+      <p>Instead of relying on distracting screens, mobile apps, or delayed analysis, the Kaz Path System introduces a visual reference directly into the rack/platform area.</p>
+      <ul>
+        <li><strong>Simple &amp; Instant:</strong> Immediate understanding of correct vs. incorrect movement.</li>
+        <li><strong>Integrated:</strong> A practical coaching tool built into standard equipment.</li>
+        <li><strong>Effective:</strong> Improves focus by reducing overthinking during the session.</li>
+      </ul>
+
+      <div class="mini-gallery">
+        <figure>
+          <img src="Kaz path poster.jpeg" alt="Kaz Path System information banner explaining the light system">
+          <figcaption>The Lights System</figcaption>
+        </figure>
+        <figure>
+          <video src="kaz-path-video-storyboard.mp4" controls muted playsinline preload="metadata"></video>
+          <figcaption>Watch It In Motion</figcaption>
+        </figure>
+      </div>
+
+      <h4>The Lights</h4>
+      <ul class="light-legend">
+        <li><span class="light-dot" style="background:#2f6fed"></span><strong>Star Lift</strong> &mdash; an exceptional, textbook rep.</li>
+        <li><span class="light-dot" style="background:#2fa84f"></span><strong>Good Lift</strong> &mdash; clean and correct.</li>
+        <li><span class="light-dot" style="background:#e0b400"></span><strong>Not Bad</strong> &mdash; close, minor correction needed.</li>
+        <li><span class="light-dot" style="background:#d43b3b"></span><strong>Wrong</strong> &mdash; technical error, adjust immediately.</li>
+      </ul>
+
+      <h4>Why You Need It</h4>
+      <ul>
+        <li><strong>Fix Errors Instantly:</strong> Stops pushing forward or cutting your pull short.</li>
+        <li><strong>Accelerate Learning:</strong> Builds perfect muscle memory in half the time.</li>
+        <li><strong>Build Confidence:</strong> Gives you a physical, visual target to chase.</li>
+      </ul>
+
+      <h4>How to Try It Now</h4>
+      <ol class="try-steps">
+        <li>Step into the rack.</li>
+        <li>Keep the bar inside the vertical corridor.</li>
+        <li>Hit the horizontal ceiling at the top.</li>
+      </ol>
+
+      <h4>Who It's For</h4>
+      <p>From beginner to elite, from high-performance training centers to school youth programs, the Kaz Path System is designed to improve how technique is taught and learned. The goal isn't to replace coaching &mdash; it's to make feedback:</p>
+      <div class="modal-checklist">
+        <span>&#10003; Instant</span>
+        <span>&#10003; Clear</span>
+        <span>&#10003; Consistent</span>
+        <span>&#10003; Easy to Understand</span>
+      </div>
+
+      <p class="modal-tagline">Step up and <span>chase the blue light.</span></p>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-brand">Kazem&rsquo;s Creations</div>
+  <p>Contact: <a href="https://ealingweightlifting.uk/about-us/about-kazem/" target="_blank" rel="noopener noreferrer">Kazem Panjavi</a> &nbsp;|&nbsp; Ealing Weightlifting Club &nbsp;|&nbsp; <a href="https://ealingweightlifting.uk" target="_blank" rel="noopener noreferrer">ealingweightlifting.uk</a></p>
+  <a class="back-to-top" href="#top">Back to top &uarr;</a>
+</footer>
+
+<script>
+  var sections = document.querySelectorAll('.product-section');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  } else {
+    sections.forEach(function (section) {
+      section.classList.add('in-view');
+    });
+  }
+
+  function openModal(modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-modal-open]').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var modal = document.getElementById(trigger.getAttribute('data-modal-open'));
+      if (modal) openModal(modal);
+    });
+  });
+
+  document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
+    overlay.addEventListener('click', function (event) {
+      if (event.target === overlay) closeModal(overlay);
+    });
+    overlay.querySelectorAll('[data-modal-close]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        closeModal(overlay);
+      });
+    });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.is-open').forEach(function (overlay) {
+        closeModal(overlay);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
