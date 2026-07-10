@@ -481,6 +481,22 @@
     color: var(--text-muted);
   }
 
+  /* Wide variant for the live scoreboard embed - full-bleed iframe, no text padding */
+  .modal.modal-wide {
+    max-width: 1200px;
+  }
+
+  .modal-body.modal-body-flush {
+    padding: 0;
+  }
+
+  .modal-body.modal-body-flush iframe {
+    display: block;
+    width: 100%;
+    height: 80vh;
+    border: none;
+  }
+
   .modal-body p {
     margin-bottom: 18px;
     font-size: 1rem;
@@ -920,10 +936,24 @@
       <li><strong>Stress Management:</strong> Prepares lifters mentally for the pressure, clock constraints, and chaotic environment of a real weightlifting stage.</li>
     </ul>
     <div class="link-row">
-      <a class="btn" href="https://youtu.be/rkEMLdvHsEo?si=vAiAJcdiLOLR7aTa" target="_blank" rel="noopener noreferrer">Watch on YouTube <span class="arrow">&rarr;</span></a>
+      <button type="button" class="btn" data-modal-open="scoreboard-live-modal">Try It Live <span class="arrow">&rarr;</span></button>
+      <a class="btn btn-ghost" href="https://youtu.be/rkEMLdvHsEo?si=vAiAJcdiLOLR7aTa" target="_blank" rel="noopener noreferrer">Watch on YouTube <span class="arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
+
+<div class="modal-overlay" id="scoreboard-live-modal">
+  <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="scoreboard-live-modal-title">
+    <div class="modal-header">
+      <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
+      <span class="eyebrow">Live Demo</span>
+      <h3 id="scoreboard-live-modal-title">Olympic Weightlifting Scoreboard — Try It Now</h3>
+    </div>
+    <div class="modal-body modal-body-flush">
+      <iframe src="https://peppy-lolly-fd2a5f.netlify.app" title="Olympic Weightlifting Scoreboard live demo" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="kaz-path-modal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="kaz-path-modal-title">
